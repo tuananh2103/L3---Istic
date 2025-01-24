@@ -1,6 +1,9 @@
 package syntax;
 
 import java.io.InputStream;
+
+import org.omg.CORBA.INITIALIZE;
+
 import utils.*;
 import lex.*;
 
@@ -48,7 +51,8 @@ public class ActVin extends AutoVin {
    	public int getAction(int etat, int itemLex) {
    		return ACTION[etat][itemLex];
    	}
-   	private int valVin;
+	// variables de suivi langage rationnel 
+   	private int valVin, volume_citerne;
    	/**
    	 * definition methode abstraite initAction de Automate
    	 */
@@ -68,8 +72,14 @@ public class ActVin extends AutoVin {
    	}
 
     /** types d'erreurs detectees */
-	private static final int FATALE = 0, NONFATALE = 1;
+	private static final int FATALE = 0, NONFATALE = 1, INITIALVOLUME = 100;
+
+	// type de qualité 
+	private static String[] qualite = {"ORDINAIRE", "BEAUJOLAIS", "BOURGOGNE"};
 	
+	
+	// ident magasin 
+	private String identMagasin = "";
 	/** gestion des erreurs 
 	 * @param tErr type de l'erreur (FATALE ou NONFATALE)
 	 * @param messErr message associe a l'erreur
@@ -174,13 +184,33 @@ public class ActVin extends AutoVin {
 
 		switch (numAct) {
 		case -1: break;
-
-		case 0 : initAction(); break;
-		
+		// initial le jeu
+		case 0 : initialisations(); break;
+		// fiche chauffeur 
 		case 1 : valVin = numIdCourant();
 					if ((findChauf(tabChauf, indChauf) == -1 ) && ((indChauf +1) == MAXCHAUF))  
-						erreur(FATALE, "Nombre maximum de chauffeurs atteint");
+						erreur(FATALE, "Nombre maximum de chauffeurs atteint"); // d'erreurs detectees
+		// volume_citerne 
+		case 2 : 
+			volume_citerne = valEnt();
+			if ((volume_citerne < 100 )|| (volume_citerne > 200)){
+				volume_citerne = INITIALVOLUME; // Valeur initial de volume
+			}
+			break;
+		// Qualité de Bourgogne 
 		case 3 : 
+			String bg = qualite[1];
+			break;
+		// Qualité de Beaujolais
+		case 4 : 
+			String bj = qualite[2];
+			break;
+		// ident magasin 
+		case 5 : 
+			if(identMagasin.contains(numIdCourant())) {
+				identMagasin.add(numIdCourant());
+			}
+			break;
 		case 9 : erreur(numAct, "erreur de syntaxe"); break;
 		default:
 			Lecture.attenteSurLecture("action " + numAct + " non prevue");
