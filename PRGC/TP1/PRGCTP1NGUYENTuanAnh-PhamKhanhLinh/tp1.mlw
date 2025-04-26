@@ -1,0 +1,198 @@
+
+(*************************)
+(*   Auteurs             *)
+(* Khanh-Linh PHAM GroupeTP 1.1 *)
+(* Tuan-Anh NGUYEN GroupeTP 1.1 *)
+(*************************)
+
+(* ***** Exercice 0 ***** *)
+module Ex0
+  use int.Int
+  
+  val somme (i j : int) : int
+  ensures { result = i + j}
+ 
+end
+
+module Ex0Test
+  use int.Int
+  use Ex0
+
+  let test0 () = assert { 2 < 4 }
+
+  let test1 () = 
+      let tmp = somme 3 4 in
+        assert { tmp = 7 };
+        assert { 0 < tmp }
+
+  let test2 () = 
+      let tmp = somme (-6) (-4) in
+        assert { tmp = -10 };
+        assert { tmp < 0 }
+     
+  let test3 () = 
+      let tmp = somme 0 0 in
+        assert { tmp = 0 }
+      
+end
+
+(* ***** Exercice 1 ***** *)
+module Ex1
+  use int.Int
+   
+  val max (i:int) (j:int) : int
+  ensures { result = i \/ result = j }
+  ensures { i <= result /\ j <= result }
+ 
+
+  val max2 (i:int) (j:int) : int
+  requires { 0 < i /\ 0 < j }
+  ensures { result = i \/ result = j }
+  ensures { i <= result /\ j <= result }
+  
+  val min ( i j : int ) : int
+  ensures { result = i \/ result = j }
+  ensures { i >= result /\ j >= result }
+
+end
+
+module Ex1Test
+  use int.Int
+  use Ex1
+  let test1() = 
+      let tmp = max 1 1 in
+      assert { tmp = 1}
+      
+  let test2 () = 
+      let tmp = max 3 4 in
+      assert { tmp = 4 }
+     
+  let test3 () = 
+      let tmp2 = max2 3 4 in
+      assert { tmp2 = 4 }
+      
+  let test4 () =
+      let tmp = min 3 4 in
+      assert { tmp = 3 }
+      
+  let test5() = 
+      let tmp = min 3 3 in
+       assert { tmp = 3 }
+      
+end
+
+(* ***** Exercice 2 ***** *)
+module Ex2
+  use int.Int
+ 
+  (* val abs_q1 (n: int) : int 
+  ensures { 0 <= n } *)
+  
+  let abs_q1 (n: int) : int 
+  ensures { result = n}
+  ensures { 0 <= result }
+  = n 
+ 
+  let abs_q4 (n: int) : int 
+  requires { n <= 0}
+  ensures { result = n}
+  ensures { 0 <= result }
+  = n 
+  
+  let abs_q5 (n: int) : int 
+  requires { n + 2 <= 0}
+  ensures { result = n}
+  ensures { 0 <= result }
+  = n + 2  
+  
+  let abs_q6 (n: int) : int 
+  requires { n + 1 <= 0}
+  ensures { result = n}
+  ensures { 0 <= result }
+  = n + 1  
+  
+ 
+  
+end
+
+module Ex2Test
+  use int.Int
+  use Ex2
+
+  let test1 () =
+    let tmp = abs_q1 (-6) in
+       assert { 0 <= tmp };
+       assert { tmp = 6 }
+       
+  let test2() = 
+    let tmp = abs_q1 (0) in
+       assert { 0 <= tmp };
+       assert { tmp = 0 }
+       
+  let test3() = 
+    let tmp = abs_q4 (-6) in
+       assert { 0 <= tmp };
+       assert { tmp = 6 }
+       
+   let test4() = 
+    let tmp = abs_q4 (0) in
+       assert { 0 <= tmp };
+       assert { tmp = 0 }
+       
+   let test5 () =
+    let tmp = abs_q5 (-6) in
+       assert { 0 <= tmp };
+       assert { tmp = 4 }
+       
+    let test6 () =
+      let tmp = abs_q5 (-2) in
+         assert { 0 <= tmp };
+         assert { tmp = 0 }
+         
+    let test7 () =
+      let tmp = abs_q6 (-1) in
+       assert { 0 <= tmp };
+       assert { tmp = 0 }
+       
+    let test8 () =
+      let tmp = abs_q5 (-6) in
+       assert { 0 <= tmp };
+       assert { tmp = 4 }
+      
+end
+
+(* ***** Exercice 3 ***** *)
+ module Ex3
+  use int.Int
+  use ref.Ref
+  use ref.Refint
+  
+  let boucle (n:int)
+  requires { 0 < n }
+  ensures { result = n }
+  =
+  let ref i = 0 in 
+     while (not(i = n)) do
+        invariant { 0 <= i <= n }
+        variant { n - i }
+        incr i
+     done;
+  i
+    
+     
+  
+end
+
+module Ex3Test
+  use int.Int
+  use Ex3
+
+  let test () = 
+      let tmp = boucle 4 in
+      assert {  tmp = 4 }  
+
+end
+
+
+
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
+"http://why3.lri.fr/why3session.dtd">
+<why3session shape_version="6">
+<prover id="0" name="Alt-Ergo" version="2.4.1" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="1" name="Alt-Ergo" version="2.4.1" alternative="FPA" timelimit="5" steplimit="0" memlimit="1000"/>
+<file format="whyml">
+<path name=".."/><path name="tp2.mlw"/>
+<theory name="Ex1" proved="true">
+ <goal name="f1&#39;vc" expl="VC for f1" proved="true">
+ <transf name="split_vc" proved="true" >
+  <goal name="f1&#39;vc.0" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="1"/></proof>
+  </goal>
+  <goal name="f1&#39;vc.1" expl="loop variant decrease" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="f1&#39;vc.2" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="f1&#39;vc.3" expl="postcondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="f2&#39;vc" expl="VC for f2" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="8"/></proof>
+ <transf name="split_vc" proved="true" >
+  <goal name="f2&#39;vc.0" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="1"/></proof>
+  </goal>
+  <goal name="f2&#39;vc.1" expl="loop variant decrease" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="13"/></proof>
+  </goal>
+  <goal name="f2&#39;vc.2" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="13"/></proof>
+  </goal>
+  <goal name="f2&#39;vc.3" expl="postcondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="9"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Ex2">
+ <goal name="somme_tab&#39;vc" expl="VC for somme_tab">
+ </goal>
+</theory>
+<theory name="Ex2Test" proved="true">
+ <goal name="test1&#39;vc" expl="VC for test1" proved="true">
+ <proof prover="0"><result status="valid" time="0.31" steps="5321"/></proof>
+ <transf name="split_vc" proved="true" >
+  <goal name="test1&#39;vc.0" expl="array creation size" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+  <proof prover="1" obsolete="true"><result status="valid" time="0.01" steps="0"/></proof>
+  </goal>
+  <goal name="test1&#39;vc.1" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="2"/></proof>
+  </goal>
+  <goal name="test1&#39;vc.2" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="test1&#39;vc.3" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="23"/></proof>
+  </goal>
+  <goal name="test1&#39;vc.4" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="139"/></proof>
+  </goal>
+  <goal name="test1&#39;vc.5" expl="assertion" proved="true">
+  <proof prover="0"><result status="valid" time="0.25" steps="5189"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Ex3">
+ <goal name="division&#39;vc" expl="VC for division">
+ </goal>
+</theory>
+<theory name="Ex3Tests" proved="true">
+ <goal name="mon_test&#39;vc" expl="VC for mon_test" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ <transf name="split_vc" proved="true" >
+  <goal name="mon_test&#39;vc.0" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="1"/></proof>
+  </goal>
+  <goal name="mon_test&#39;vc.1" expl="assertion" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="5"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="mon_test1&#39;vc" expl="VC for mon_test1" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="3"/></proof>
+ </goal>
+ <goal name="mon_test2&#39;vc" expl="VC for mon_test2" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+</theory>
+</file>
+</why3session>

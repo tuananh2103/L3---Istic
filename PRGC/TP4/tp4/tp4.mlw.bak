@@ -1,0 +1,145 @@
+
+(*************************)
+(*   Auteurs             *)
+(* Khanh-Linh PHAM GroupeTP1.1 *)
+(* Anh NGUYEN GroupeTP1.1 *)
+(*************************)
+
+module LabySpec
+  use int.Int
+  use bool.Bool
+  use matrix.Matrix 
+  use ref.Ref
+  use random.Random (* pour utiliser random_int et random_bool dans mk_laby *)
+
+          (************************************************)
+          (******** LES DEFINITIONS DE TYPES **************)
+          (************************************************)
+
+
+  (* question 0 *)
+  type case = Libre | Mur | Sortie
+  
+  type laby =  matrix case
+
+  type direction = Haut | Bas | Droite | Gauche
+
+          (************************************************)
+          (******** LES PREDICATS ET FONCTIONS   **********)
+          (************************************************)
+ 
+  (* question 1 *)          
+  predicate laby_valide (b : laby) = 
+  (forall i j. valid_index b i j ->
+    match get b i j with
+    | Libre | Mur | Sortie -> true
+    end
+  )
+  /\ (forall i,j : int. valid_index b i j -> (exists x, y : int. valid_index b x y /\ get b x y = Sortie \/ ((x = i) /\(y = j))))
+
+  (* question 2 *)
+  	predicate position_valide (b : laby) (i j : int) =
+  exists x, y : int. valid_index b x y /\ laby_valide b /\ not( get b x y = Mur)
+  
+  
+
+  (* question 3 *)
+  predicate sortie_trouvee (b : laby) (i j : int) = 
+   valid_index b i j /\ get b i j = Sortie
+  
+  (* question 6 - à utiliser dans deplacement *)
+ let function nouvelle_position (i j : int) (d : direction) : (int, int) =
+    match d with
+    | Haut  -> (i,j+1) 
+    | Bas ->(i,j-1) 
+    | Gauche ->(i-1,j) 
+    | Droite -> (i+1, j) 
+    end
+
+    
+ 
+           (*****************************************)
+           (******** LES SOUS-PROGRAMMES   **********)
+           (*****************************************)
+  
+  
+  (* question 4 *)
+  let meme_case (x y:case) : bool   (* A utiliser dans gagne *)
+  ensures { result <-> x=y }
+  =
+  match x,y with 
+    | Libre,Libre | Mur, Mur | Sortie, Sortie -> true
+    | _ -> false
+  end
+  
+  let  agne (b : laby) (i j : int) : bool 
+ requires { position_valide b i j}
+  ensures {result = sortie_trouvee b i j}
+  =
+  meme_case (get b i j) Sortie 
+  (* question 5 *)
+  val peut_se_deplacer_vers (b : laby) (i j : int) : bool
+  ensures { result <-> position_valide b i j }
+  
+
+  (* question 6 *)
+  (* Dans la specification, il faut utiliser la fonction 
+     nouvelle_position à définir plus haut *)
+ let  deplacement (b : laby) (i j : int) (d : direction) : (int, int)
+  requires {position_valide b i j} 
+  ensures { let (x,y) = nouvelle_position i j d in 
+  (position_valide b x y -> result =(x,y))/\ (not(position_valide b x y )-> result=(i,j)) } 
+  =
+  let (x,y)= nouvelle_position i j d in     
+  if (peut_se_deplacer_vers b x y) then (x,y) else (i,j)
+
+  (* question 9 *)
+  let mk_laby (n : int) (m : int) : laby 
+  requires {n > 0 /\ m > 0}
+  ensures {result.rows=n}
+  ensures {result.columns=m}
+  ensures {laby_valide result}
+  =
+  let lab = make n m Libre in
+  for i = 0 to n - 1 do
+    for j = 0 to m - 1 do
+    
+      match random_bool () with
+        | True -> set lab i j Mur  
+        | _ -> set lab i j Libre
+      end
+      
+    done;
+  done;
+  let sortie_i = random_int n in
+  let sortie_j = random_int m in
+  set lab sortie_i sortie_j Sortie;
+  lab
+  
+  (* question 10 *)
+  val position_initiale (b : laby) : (int, int) 
+  requires { laby_valide b } 
+  ensures {let (x,y) = result in position_valide b x y /\ not (sortie_trouvee b x y ) }
+  
+end
+
+module LabyTest       (*****************************************)
+  use LabySpec        (****   A utiliser dans la 3e partie  ****)
+  use int.Int         (*****************************************)
+
+ let testLaby () = 
+      let m = mk_laby 3 4 in
+      let i,j = position_initiale m in
+      assert { laby_valide m } ;
+      assert { position_valide m i j } ;
+      let i',j' = deplacement m i j Haut in
+      begin
+         assert { position_valide m i' j' };
+         if (i=i' && j=j') then 
+            let i2,j2 = deplacement m i j Gauche in
+            assert { position_valide m i2 j2 } 
+         else 
+            assert { position_valide m i' j' }    
+      end
+
+end

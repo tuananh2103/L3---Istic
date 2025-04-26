@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
+"http://why3.lri.fr/why3session.dtd">
+<why3session shape_version="6">
+<prover id="0" name="Alt-Ergo" version="2.4.1" timelimit="5" steplimit="0" memlimit="1000"/>
+<file format="whyml">
+<path name=".."/><path name="tp2.mlw"/>
+<theory name="Ex1" proved="true">
+ <goal name="f1&#39;vc" expl="VC for f1" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="11"/></proof>
+ </goal>
+ <goal name="f2&#39;vc" expl="VC for f2" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="8"/></proof>
+ </goal>
+</theory>
+<theory name="Ex2">
+ <goal name="somme_tab&#39;vc" expl="VC for somme_tab">
+ <proof prover="0"><result status="timeout" time="5.00"/></proof>
+ <transf name="split_vc" >
+  <goal name="somme_tab&#39;vc.0" expl="loop invariant init">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.00" steps="4"/></proof>
+  </goal>
+  <goal name="somme_tab&#39;vc.1" expl="index in array bounds">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.00" steps="6"/></proof>
+  </goal>
+  <goal name="somme_tab&#39;vc.2" expl="loop invariant preservation">
+  <proof prover="0" obsolete="true"><result status="timeout" time="5.00"/></proof>
+  </goal>
+  <goal name="somme_tab&#39;vc.3" expl="postcondition">
+  <proof prover="0" obsolete="true"><result status="timeout" time="5.00"/></proof>
+  </goal>
+  <goal name="somme_tab&#39;vc.4" expl="VC for somme_tab">
+  <proof prover="0" obsolete="true"><result status="valid" time="0.00" steps="4"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="Ex2Test" proved="true">
+ <goal name="test1&#39;vc" expl="VC for test1" proved="true">
+ <proof prover="0"><result status="valid" time="0.25" steps="5323"/></proof>
+ </goal>
+</theory>
+<theory name="Ex3">
+ <goal name="division&#39;vc" expl="VC for division">
+ <proof prover="0"><result status="unknown" time="0.01"/></proof>
+ </goal>
+</theory>
+<theory name="Ex3Tests" proved="true">
+ <goal name="mon_test&#39;vc" expl="VC for mon_test" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+ <goal name="mon_test1&#39;vc" expl="VC for mon_test1" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="3"/></proof>
+ </goal>
+ <goal name="mon_test2&#39;vc" expl="VC for mon_test2" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+</theory>
+</file>
+</why3session>

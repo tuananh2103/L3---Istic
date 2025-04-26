@@ -1,0 +1,326 @@
+
+(*************************)
+(*   Auteurs             *)
+(* NGUYEN TUAN ANH GroupeTP1.1  <-------- A MODIFIER *)
+(* PHAM KHANH LINH GroupeTP1.1 *)
+(*************************)
+
+module TriEx1 (* EXERCICE 1 *)
+  use int.Int
+  use ref.Ref
+  use ref.Refint
+  use array.Array
+  use array.IntArraySorted (* sorted et sorted_sub *)
+  use array.ArraySwap      (* swap *)
+  use array.ArrayPermut    (* permut_all *)
+  use array.ArrayEq
+
+(* Prédicats et sous-programme utiles (et vus au cours 3)
+
+  predicate sorted (a : array int)
+
+  predicate sorted_sub (a : array int) (i j : int)
+
+  predicate permut_all (a1 a2: array 'a)
+
+  val swap (a: array int) (i: int) (j: int) =
+  requires { 0 <= i < length a /\ 0 <= j < length a }
+  ensures { exchange (old a) a i j }
+*)
+
+(* Question 1 *)
+let minimum (t:array int) (m n:int) : int
+ requires { 0 <= m < n <= length t}
+ ensures { m <= result < n } 
+ ensures { forall i: int. m <= i < n -> t[i] >= t[result]}
+ =
+ let ref min:int = m in 
+  for i = m + 1 to n -1 do 
+    invariant{m <= min < n}
+    invariant{ forall j : int. m <= j < i -> t[j] >= t[min]}
+    if( t[i] < t[min] ) then min := i
+  done;
+ min
+ 
+
+(* !---- utiliser les tests du module TriEx1Tests 
+         pour tester le code écrit --------------! *)
+
+(* Question 2 *)
+let tri_selection (t: array int) : unit 
+writes {t}
+ensures { sorted t }
+ensures { permut_all (old t ) t }
+=
+for i = 0 to length t -1 do 
+  invariant {sorted_sub t 0 i}
+  invariant {permut_all (old t ) t}
+  invariant {forall x y : int. 0 <= x < i <= y < length t -> t[x] <= t[y]}
+  swap t i (minimum t i (length t))
+  
+ done;
+
+(* !---- utiliser les tests du module TriEx1Tests 
+         pour tester le code écrit --------------! *)
+
+end
+
+module TriEx1Tests
+  use int.Int
+  use array.Array
+  use array.ArrayEq
+  use TriEx1
+
+(* Question 2 : tests *)
+
+(* Test du code des programmes    *)
+
+(*
+Ce test est à exécuter avec la commande suivante :
+
+why3 execute tp-tris.mlw --use=TriEx1Tests 'test_minimum ()'
+
+Execution of TriEx1.test_minimum ():
+     type: int
+   result: 8
+C'est bien le résultat attendu.
+   
+Attention à ne pas mettre d'assertion dans un tel test
+(car execute ne les vérifierait pas) !   
+*)
+
+  let test_minimum () :  int = 
+  let t = make 9 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  minimum t 0 (length t)
+
+  let test_minimum2() :  int = 
+  let t = make 19 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  t[8] <- 1 ; t[9] <- 0 ; t[10] <- 5; t[11] <- 10;
+  t[12] <- 3; t[13] <- 99; t[14] <- 2 ; t[15] <- 6;
+  t[16] <- 8 ; t[17] <- 1; t[18] <- 9;
+  minimum t 0 (length t)
+
+  let test_minimum3 () :  int = 
+  let t = make 9 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  minimum t 0 (length t)
+
+(* Question 2 : test *)
+(* Ce test est à exécuter depuis un terminal,
+   avec la commande suivante :
+   
+why3 execute tp-tris.mlw --use=TriEx1Tests 'test_minimum ()'
+  
+*)
+
+  let test_triSelection() : array int = 
+  let t = make 9 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  tri_selection t ; 
+  t
+
+  let test_triSelection2() : array int = 
+  let t = make 19 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  t[8] <- 1 ; t[9] <- 0 ; t[10] <- 5; t[11] <- 10;
+  t[12] <- 3; t[13] <- 99; t[14] <- 2 ; t[15] <- 6;
+  t[16] <- 8 ; t[17] <- 1; t[18] <- 9;
+  tri_selection t ; 
+  t
+
+end
+
+module TriEx2 (* EXERCICE 2 *)
+  use int.Int
+  use ref.Ref
+  use ref.Refint
+  use array.Array
+  use array.IntArraySorted
+  use array.ArrayPermut
+  use array.ArrayEq
+
+(* Question 1 *)
+(* Compléter la spécification et les invariants du programme suivant *)
+(* Cette version est plus simple que celle proposée sur wikipedia.   *)
+
+let tri_insertion_v0 (t: array int) : unit 
+ensures { sorted t }
+ensures { permut_all (old t ) t }
+= 
+for i = 1 to (length t) - 1 do
+    invariant {sorted_sub  t 0 i }
+    invariant {permut_all (old t ) t}
+      
+      let courant = t[i] in 
+      let ref j = i in 
+      
+      while (j > 0 && t[j - 1] > courant) do
+        variant { j }
+        invariant {permut_all (old t ) t}
+        invariant { 0 <= j <= i}
+        invariant {forall m n:int. (0 <= m < n <= i /\ m <> j /\ n <> j) -> t[m] <= t[n]}
+        invariant {forall k : int. (j < k <= i) -> t[k] > courant}
+        invariant {t[j] = courant}
+        
+        t[j] <- t[j - 1] ;
+        t[j - 1] <- courant ;
+        decr j
+      done 
+    done  
+    
+  
+(* Code à utiliser pour cette version, sans le modifier *)
+(*
+     for i = 1 to (length t) - 1 do
+      invariant { (* a completer *) }
+      
+      let courant = t[i] in 
+      let ref j = i in 
+      
+      while (j > 0 && t[j - 1] > courant) do
+        variant { (* a completer *) }
+        invariant { (* a completer *) }
+        
+        t[j] <- t[j - 1] ;
+        t[j - 1] <- courant ;
+        decr j
+      done
+      
+    done  
+
+*)
+(* Question 2 *)
+(* En s'inspirant de tri_insertion_v0, spécifier, programmer et prouver 
+   la version plus optimisée de wikipedia *)
+let tri_insertion (t: array int) : unit 
+ensures { sorted t }
+ensures { permut_all (old t ) t }
+=
+  for i = 0 to (length t) -1 do 
+    invariant {sorted_sub t 0 i }
+    invariant {permut_all (old t ) t}
+    
+    let courant = t[i] in 
+    let ref j = i in 
+    
+    while ( j > 0 && t[j-1] < t[j]) do 
+      variant { j }
+      invariant {permut_all (old t) t[j <- courant] }
+      invariant { 0 <= j <= i}
+      invariant {forall m n:int. (0 <= m <= n <= i) /\ (m <> j) /\ (n <> j) -> t[m] <= t[n]}
+      invariant {forall k : int. (j < k <= i) -> t[k] > courant}
+      invariant {t[j] = courant}
+      
+      t[j] <- t[j - 1] ;
+      decr j
+    done; 
+    t[j] <- courant;
+  done
+
+
+end
+
+module TriEx2Tests
+  use int.Int
+  use array.Array
+  use array.ArrayEq
+  use TriEx2
+  
+  let test_tri_insertion_v0_1() : array int = 
+  let t = make 9 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  tri_insertion_v0 t ; 
+  t
+
+  let test_tri_insertion_v0_2() : array int = 
+  let t = make 19 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  t[8] <- 1 ; t[9] <- 0 ; t[10] <- 5; t[11] <- 10;
+  t[12] <- 3; t[13] <- 99; t[14] <- 2 ; t[15] <- 6;
+  t[16] <- 8 ; t[17] <- 1; t[18] <- 9;
+  tri_insertion_v0 t ; 
+  t
+  
+  let test_tri_insertion_1() : array int = 
+  let t = make 9 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  tri_insertion t ; 
+  t
+
+  let test_tri_insertion_2() : array int = 
+  let t = make 19 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  t[8] <- 1 ; t[9] <- 0 ; t[10] <- 5; t[11] <- 10;
+  t[12] <- 3; t[13] <- 99; t[14] <- 2 ; t[15] <- 6;
+  t[16] <- 8 ; t[17] <- 1; t[18] <- 9;
+  tri_insertion t ; 
+  t
+  
+end 
+
+module TriEx3 (* EXERCICE 3 *)
+  use int.Int
+  use ref.Ref
+  use ref.Refint
+  use array.Array
+  use array.IntArraySorted
+  use array.ArraySwap
+  use array.ArrayPermut
+  use array.ArrayEq
+  
+let tri_bulles (t: array int) : unit
+writes {t}
+ensures { sorted t /\ permut_all (old t) t }
+= 
+for i = (length t) -1 downto 1 do
+  invariant { permut_all (old t) t }
+  invariant { sorted_sub t i (length t)}
+  invariant {forall m n:int. 0 <= m <= i < n < length t ->  t[m] <= t[n]}
+  
+  for j = 0 to i-1 do 
+    invariant { permut_all (old t) t }
+    invariant { sorted_sub t i (length t)}
+    invariant {forall m n:int. 0 <= m <= i < n < length t ->  t[m] <= t[n]}
+    invariant {forall k: int. 0<= k <= j -> t[j] >= t[k]}
+    
+    if (t[j] > t[j+1]) then swap t j (j+1);
+      done;
+  done
+
+end  
+
+module TriEx3Tests
+  use int.Int
+  use array.Array
+  use array.ArrayEq
+  use TriEx3
+  
+  let test_tri_bulles_1() : array int = 
+  let t = make 9 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  tri_bulles t ; 
+  t
+
+  let test_tri_bulles_2() : array int = 
+  let t = make 19 1 in 
+  t[0] <- 9 ; t[1] <- 7 ; t[2] <- 8 ; t[3] <- 5;
+  t[4] <- 2 ; t[5] <- 4 ; t[6] <- 3 ; t[7] <- 6;
+  t[8] <- 1 ; t[9] <- 0 ; t[10] <- 5; t[11] <- 10;
+  t[12] <- 3; t[13] <- 99; t[14] <- 2 ; t[15] <- 6;
+  t[16] <- 8 ; t[17] <- 1; t[18] <- 9;
+  tri_bulles t ; 
+  t
+  
+end 

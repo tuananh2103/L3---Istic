@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
+"http://why3.lri.fr/why3session.dtd">
+<why3session shape_version="6">
+<prover id="0" name="Alt-Ergo" version="2.4.1" timelimit="1" steplimit="0" memlimit="1000"/>
+<prover id="1" name="Z3" version="4.8.12" timelimit="1" steplimit="0" memlimit="1000"/>
+<prover id="2" name="CVC4" version="1.8" timelimit="1" steplimit="0" memlimit="1000"/>
+<file format="whyml">
+<path name=".."/><path name="tp7.mlw"/>
+<theory name="TP7">
+ <goal name="rechercher_min&#39;vc" expl="VC for rechercher_min">
+ <transf name="split_vc" >
+  <goal name="rechercher_min&#39;vc.0" expl="variant decrease" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="44"/></proof>
+  </goal>
+  <goal name="rechercher_min&#39;vc.1" expl="precondition" proved="true">
+  <proof prover="0" timelimit="5"><result status="timeout" time="5.00"/></proof>
+  <proof prover="2" timelimit="5"><result status="valid" time="0.12" steps="17545"/></proof>
+  </goal>
+  <goal name="rechercher_min&#39;vc.2" expl="postcondition">
+  <proof prover="0" timelimit="5"><result status="timeout" time="5.00"/></proof>
+  <proof prover="1" timelimit="5"><result status="timeout" time="5.00"/></proof>
+  <proof prover="2" timelimit="5"><result status="timeout" time="5.00" steps="2190132"/></proof>
+  </goal>
+  <goal name="rechercher_min&#39;vc.3" expl="postcondition" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="6"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="rechercher_max&#39;vc" expl="VC for rechercher_max">
+ <transf name="split_vc" >
+  <goal name="rechercher_max&#39;vc.0" expl="variant decrease" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="44"/></proof>
+  </goal>
+  <goal name="rechercher_max&#39;vc.1" expl="precondition" proved="true">
+  <proof prover="0" timelimit="5"><result status="timeout" time="5.00"/></proof>
+  <proof prover="2" timelimit="5"><result status="valid" time="0.15" steps="17651"/></proof>
+  </goal>
+  <goal name="rechercher_max&#39;vc.2" expl="postcondition">
+  <proof prover="0" timelimit="5"><result status="timeout" time="5.00"/></proof>
+  <proof prover="1" timelimit="5"><result status="timeout" time="5.00"/></proof>
+  <proof prover="2" timelimit="5"><result status="timeout" time="5.00" steps="2402799"/></proof>
+  </goal>
+  <goal name="rechercher_max&#39;vc.3" expl="postcondition" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="6"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="inserer&#39;vc" expl="VC for inserer">
+ <transf name="split_vc" >
+  <goal name="inserer&#39;vc.0" expl="variant decrease" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="59"/></proof>
+  </goal>
+  <goal name="inserer&#39;vc.1" expl="precondition" proved="true">
+  <proof prover="0" timelimit="5"><result status="timeout" time="5.00"/></proof>
+  <proof prover="2" timelimit="5"><result status="valid" time="0.22" steps="26657"/></proof>
+  </goal>
+  <goal name="inserer&#39;vc.2" expl="variant decrease" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="59"/></proof>
+  </goal>
+  <goal name="inserer&#39;vc.3" expl="precondition" proved="true">
+  <proof prover="0" timelimit="5"><result status="timeout" time="5.00"/></proof>
+  <proof prover="2" timelimit="5"><result status="valid" time="0.22" steps="29333"/></proof>
+  </goal>
+  <goal name="inserer&#39;vc.4" expl="postcondition">
+  <transf name="split_vc" >
+   <goal name="inserer&#39;vc.4.0" expl="postcondition" proved="true">
+   <proof prover="0" timelimit="5"><result status="valid" time="0.40" steps="2978"/></proof>
+   </goal>
+   <goal name="inserer&#39;vc.4.1" expl="postcondition">
+   <proof prover="0" timelimit="5"><result status="timeout" time="5.00"/></proof>
+   <proof prover="1" timelimit="5"><result status="timeout" time="5.00"/></proof>
+   <proof prover="2" timelimit="5"><result status="timeout" time="5.00" steps="2371643"/></proof>
+   </goal>
+  </transf>
+  </goal>
+  <goal name="inserer&#39;vc.5" expl="postcondition" proved="true">
+  <transf name="split_vc" proved="true" >
+   <goal name="inserer&#39;vc.5.0" expl="postcondition" proved="true">
+   <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="63"/></proof>
+   </goal>
+   <goal name="inserer&#39;vc.5.1" expl="postcondition" proved="true">
+   <proof prover="0" timelimit="5"><result status="valid" time="0.56" steps="5412"/></proof>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="supprimer_max&#39;vc" expl="VC for supprimer_max">
+ <transf name="split_vc" >
+  <goal name="supprimer_max&#39;vc.0" expl="variant decrease" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="44"/></proof>
+  </goal>
+  <goal name="supprimer_max&#39;vc.1" expl="precondition" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="38"/></proof>
+  </goal>
+  <goal name="supprimer_max&#39;vc.2" expl="variant decrease" proved="true">
+  <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="44"/></proof>
+  </goal>
+  <goal name="supprimer_max&#39;vc.3" expl="precondition" proved="true">
+  <proof prover="0"><result status="timeout" time="1.00"/></proof>
+  <proof prover="2"><result status="valid" time="0.12" steps="17651"/></proof>
+  </goal>
+  <goal name="supprimer_max&#39;vc.4" expl="postcondition">
+  <proof prover="0"><result status="timeout" time="1.00"/></proof>
+  <proof prover="1"><result status="timeout" time="1.00"/></proof>
+  <proof prover="2"><result status="timeout" time="1.00" steps="143254"/></proof>
+  <transf name="split_vc" >
+   <goal name="supprimer_max&#39;vc.4.0" expl="postcondition">
+   <proof prover="0"><result status="timeout" time="1.00"/></proof>
+   <proof prover="1"><result status="timeout" time="1.00"/></proof>
+   <proof prover="2"><result status="timeout" time="1.00" steps="152077"/></proof>
+   <transf name="split_vc" >
+    <goal name="supprimer_max&#39;vc.4.0.0" expl="postcondition" proved="true">
+    <proof prover="0"><result status="valid" time="0.01" steps="12"/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.0.1" expl="postcondition" proved="true">
+    <proof prover="0"><result status="valid" time="0.01" steps="32"/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.0.2" expl="postcondition">
+    <proof prover="0" timelimit="10" memlimit="4000"><result status="timeout" time="10.00"/></proof>
+    <proof prover="1"><result status="timeout" time="1.00"/></proof>
+    <proof prover="2" timelimit="10" memlimit="4000"><undone/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.0.3" expl="postcondition">
+    <proof prover="0" timelimit="10" memlimit="4000"><result status="timeout" time="10.00"/></proof>
+    <proof prover="1"><result status="timeout" time="1.00"/></proof>
+    <proof prover="2" timelimit="10" memlimit="4000"><undone/></proof>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="supprimer_max&#39;vc.4.1" expl="postcondition">
+   <proof prover="0"><result status="timeout" time="1.00"/></proof>
+   <proof prover="1"><result status="timeout" time="1.00"/></proof>
+   <proof prover="2"><result status="timeout" time="1.00" steps="124717"/></proof>
+   <transf name="split_vc" >
+    <goal name="supprimer_max&#39;vc.4.1.0" expl="postcondition" proved="true">
+    <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.1.1" expl="postcondition" proved="true">
+    <proof prover="0"><result status="valid" time="0.01" steps="53"/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.1.2" expl="postcondition">
+    <proof prover="0"><result status="timeout" time="1.00"/></proof>
+    <proof prover="1"><result status="timeout" time="1.00"/></proof>
+    <proof prover="2"><result status="timeout" time="1.00" steps="100640"/></proof>
+    <transf name="split_vc" >
+     <goal name="supprimer_max&#39;vc.4.1.2.0" expl="postcondition">
+     <proof prover="0"><undone/></proof>
+     </goal>
+    </transf>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.1.3" expl="postcondition">
+    <proof prover="0" timelimit="10" memlimit="4000"><undone/></proof>
+    <proof prover="1"><result status="timeout" time="1.00"/></proof>
+    <proof prover="2"><result status="timeout" time="1.00" steps="90438"/></proof>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="supprimer_max&#39;vc.4.2" expl="postcondition">
+   <proof prover="0"><result status="timeout" time="1.00"/></proof>
+   <proof prover="1"><result status="timeout" time="1.00"/></proof>
+   <proof prover="2"><result status="timeout" time="1.00" steps="140562"/></proof>
+   <transf name="split_vc" >
+    <goal name="supprimer_max&#39;vc.4.2.0" expl="postcondition" proved="true">
+    <proof prover="0"><result status="valid" time="0.01" steps="18"/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.2.1" expl="postcondition" proved="true">
+    <proof prover="0"><result status="valid" time="0.01" steps="45"/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.2.2" expl="postcondition">
+    <proof prover="0"><result status="timeout" time="1.00"/></proof>
+    <proof prover="1"><result status="timeout" time="1.00"/></proof>
+    <proof prover="2"><result status="timeout" time="1.00" steps="112250"/></proof>
+    <transf name="split_vc" >
+     <goal name="supprimer_max&#39;vc.4.2.2.0" expl="postcondition">
+     <proof prover="0"><undone/></proof>
+     </goal>
+    </transf>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.2.3" expl="postcondition">
+    <proof prover="0" timelimit="10" memlimit="4000"><undone/></proof>
+    <proof prover="1"><result status="timeout" time="1.00"/></proof>
+    <proof prover="2"><result status="timeout" time="1.00" steps="90880"/></proof>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="supprimer_max&#39;vc.4.3" expl="postcondition">
+   <proof prover="0"><result status="timeout" time="1.00"/></proof>
+   <proof prover="1"><result status="timeout" time="1.00"/></proof>
+   <proof prover="2"><result status="timeout" time="1.00" steps="137592"/></proof>
+   <transf name="split_vc" >
+    <goal name="supprimer_max&#39;vc.4.3.0" expl="postcondition" proved="true">
+    <proof prover="0"><result status="valid" time="0.01" steps="17"/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.3.1" expl="postcondition" proved="true">
+    <proof prover="0"><result status="valid" time="0.01" steps="17"/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.3.2" expl="postcondition">
+    <proof prover="0"><result status="timeout" time="1.00"/></proof>
+    <proof prover="1"><result status="timeout" time="1.00"/></proof>
+    <proof prover="2"><result status="timeout" time="1.00" steps="105866"/></proof>
+    <transf name="split_vc" >
+     <goal name="supprimer_max&#39;vc.4.3.2.0" expl="postcondition">
+     <proof prover="0"><undone/></proof>
+     </goal>
+    </transf>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.3.3" expl="postcondition">
+    <proof prover="0" timelimit="10" memlimit="4000"><undone/></proof>
+    <proof prover="1"><result status="timeout" time="1.00"/></proof>
+    <proof prover="2"><result status="timeout" time="1.00" steps="97448"/></proof>
+    </goal>
+   </transf>
+   </goal>
+   <goal name="supprimer_max&#39;vc.4.4" expl="postcondition">
+   <proof prover="0"><result status="timeout" time="1.00"/></proof>
+   <proof prover="1"><result status="timeout" time="1.00"/></proof>
+   <proof prover="2"><result status="timeout" time="1.00" steps="138574"/></proof>
+   <transf name="split_vc" >
+    <goal name="supprimer_max&#39;vc.4.4.0" expl="postcondition" proved="true">
+    <proof prover="0"><result status="valid" time="0.01" steps="12"/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.4.1" expl="postcondition" proved="true">
+    <proof prover="0"><result status="valid" time="0.01" steps="32"/></proof>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.4.2" expl="postcondition">
+    <proof prover="0"><result status="timeout" time="1.00"/></proof>
+    <proof prover="1"><result status="timeout" time="1.00"/></proof>
+    <proof prover="2"><result status="timeout" time="1.00" steps="91518"/></proof>
+    <transf name="split_vc" >
+     <goal name="supprimer_max&#39;vc.4.4.2.0" expl="postcondition">
+     <proof prover="0"><undone/></proof>
+     </goal>
+    </transf>
+    </goal>
+    <goal name="supprimer_max&#39;vc.4.4.3" expl="postcondition">
+    <proof prover="0"><result status="timeout" time="1.00"/></proof>
+    <proof prover="1"><undone/></proof>
+    <proof prover="2"><result status="timeout" time="1.00" steps="93246"/></proof>
+    </goal>
+   </transf>
+   </goal>
+  </transf>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="supprimer&#39;vc" expl="VC for supprimer">
+ </goal>
+</theory>
+<theory name="TP7tests">
+ <goal name="test_estABR&#39;vc" expl="VC for test_estABR" proved="true">
+ <proof prover="0" timelimit="5"><result status="valid" time="0.06" steps="461"/></proof>
+ </goal>
+ <goal name="test_rechercher_min1&#39;vc" expl="VC for test_rechercher_min1" proved="true">
+ <proof prover="0" timelimit="5"><result status="valid" time="0.00" steps="10"/></proof>
+ </goal>
+ <goal name="test_rechercher_min2&#39;vc" expl="VC for test_rechercher_min2" proved="true">
+ <proof prover="0" timelimit="5"><result status="valid" time="0.01" steps="54"/></proof>
+ </goal>
+ <goal name="test_rechercher_min3&#39;vc" expl="VC for test_rechercher_min3" proved="true">
+ <proof prover="0" timelimit="5"><result status="valid" time="0.06" steps="461"/></proof>
+ </goal>
+ <goal name="test_inserer1&#39;vc" expl="VC for test_inserer1" proved="true">
+ <proof prover="0" timelimit="5"><result status="valid" time="0.10" steps="651"/></proof>
+ </goal>
+ <goal name="test_inserer2&#39;vc" expl="VC for test_inserer2">
+ <proof prover="0" timelimit="5"><result status="timeout" time="5.00"/></proof>
+ <proof prover="1" timelimit="5"><result status="timeout" time="5.00"/></proof>
+ <proof prover="2" timelimit="5"><result status="timeout" time="5.00" steps="1320851"/></proof>
+ </goal>
+ <goal name="test_supprimer1&#39;vc" expl="VC for test_supprimer1">
+ <proof prover="0" obsolete="true"><result status="valid" time="0.07" steps="461"/></proof>
+ </goal>
+</theory>
+</file>
+</why3session>

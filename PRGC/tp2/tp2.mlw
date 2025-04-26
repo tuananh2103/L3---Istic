@@ -1,0 +1,140 @@
+
+(*************************)
+(*   Auteurs             *)
+(* KHanh-Linh PHAM GroupeTP 1.1  *)
+(* Tuan Anh NGUYEN GroupeTP 1.1  *)
+(*************************)
+
+
+module Ex1
+  use int.Int
+  use ref.Ref
+
+  let f1 () : int 
+  ensures { result = 100 }
+  =
+    let ref n = 0 in
+    while n < 100  do
+      invariant{ 0 <= n <= 100}
+      variant{ 100 - n 
+      n := n + 1
+    done;
+    n
+
+  let f2 (n : int) : int
+  ensures {0 <= result }
+  =
+    let ref n = 100 in
+    while n > 0  do
+     invariant{ 0 <= n <= 100}
+     variant{ 100 + n }
+      n := n - 1
+    done;
+    n
+
+end
+
+module Ex2
+  use int.Int
+  use ref.Ref
+  use ref.Refint
+  use array.Array
+  use array.ArraySum 
+  
+  (* 
+  val somme_tab ( a : array int) : int
+  requires{ forall i: int. 0 <= i < length a -> a[i] >= 0}
+  ensures { ArraySum.sum a 0 (length a) = result}
+  *)
+  
+  let somme_tab ( a : array int) : int
+  requires{ forall i: int. 0 <= i < length a -> a[i] >= 0}
+  ensures { ArraySum.sum a 0 (length a) = result}
+  =
+   let ref s = 0 in
+    for i = 0 to (length a)-1 do
+      invariant{ forall j : int.(0 <= j < i)-> s = s + a[j]}
+      s := s + a[i];
+    done;
+  s
+end
+
+module Ex2Test
+  use Ex2
+  use array.Array
+  
+  let test1() = 
+    let t = make 3 0 in
+     t[0] <- 1;
+     t[1] <- 2;
+     t[2] <- 3;
+     
+     let tmp1 = somme_tab t in assert { tmp1 = 6}
+
+end
+
+module Ex3
+  use int.Int
+  use ref.Refint
+
+(* Question 3.1 *)
+  val division3_1 (a b: int) : int
+  requires { a > 0 /\ b > 0 }
+  ensures{ result >= 0 /\ a = b*result /\ a < b*(result + 1)}
+  
+(* Question 3.3 *)
+  let division (a b: int) : int
+  requires{ a > 0 /\ b > 0 }
+  ensures{result >= 0 /\ a = b*result /\ a < b*(result + 1)}
+  = 
+  let ref rest = a in
+  let ref quotient = 0 in 
+  while( rest >= b) do
+      invariant { rest >= 0}
+      invariant {quotient*b + rest = a}
+       variant {rest}
+      rest := rest - b;
+      quotient := quotient + 1;
+    done;  
+    quotient
+
+end
+
+
+module Ex3Tests
+  use int.Int
+  use Ex3
+  
+  let mon_test () =
+    let q = division 12 3 in
+      assert { q  = 4 }
+
+  let mon_test1 () = 
+    let q2 = division 13 3 in
+      assert { q2  = 4 }
+
+  let mon_test2 () =
+    let q = division 100 4 in
+      assert { q  = 25 }
+
+
+end
+
+module Ex4
+  use mach.int.Int
+  use ref.Refint
+  use ref.Ref
+  use number.Gcd
+
+  val pgcd (a b: int) : int
+  (* a completer *)
+
+end
+
+module Ex4Test
+  use ref.Refint
+  use Ex4
+
+  (* a completer *)
+
+end

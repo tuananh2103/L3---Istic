@@ -1,0 +1,315 @@
+
+(*************************)
+(*   Auteurs             *)
+(* NGUYEN Tuan Anh G1.1  *)
+(* PHAM Khanh Linh G1.1  *)
+(*************************)
+
+(********** TP 6 : tableau circulaire ****************************)
+
+(*
+ 
+   Dans ce sujet :
+   - les spécifications vous sont données, et vous ne devez pas les modifer.   
+   - Il est inutile d'utiliser des boucles.
+
+*)
+
+
+(* PARTIE 1 : listes  
+   
+  Voici les opérations associées aux tableaux circulaires vus en cours.
+  Vous devez : 
+  - prouver les modules de tests, puis
+  - programmer tous les sous-progrzmmes du module TableauCirculaire et
+    prouver que chaque sous-programme est correct par rapport à sa spécification.
+    
+*)    
+
+(*****************************************************************)
+(******* QUESTIONS 1 et 2 : avec des  listes *********************)
+(*****************************************************************)
+module TableauCirculaire
+  use int.Int
+  use option.Option
+  use list.List
+  use import list.NthLengthAppend as L
+  use list.NthHdTl
+  use import array.Array as A
+
+  type tableauCirculaire 'a = {
+    mutable premier: int;
+    mutable lg  : int;
+            tableau : array 'a;
+    ghost mutable sequence: list 'a;  }
+  invariant {
+    let taille = A.length tableau in
+    0 <= premier <  taille /\
+    0 <= lg <= taille /\
+    lg = L.length sequence /\
+    forall i: int. 0 <= i < lg ->
+      (premier + i < taille ->
+         nth i sequence = Some tableau[premier + i]) /\
+      (0 <= premier + i - taille ->
+         nth i sequence = Some tableau[premier + i - taille])
+  }
+  by { premier = 0; lg = 0; tableau = make 1 (any 'a); sequence = Nil }
+
+(* capacité maximale d'un tableau circulaire *)
+  let function taille (b: tableauCirculaire 'a) : int = A.length b.tableau
+
+  (* nombre d'éléments *)
+ let function longueur (b: tableauCirculaire 'a) : int = b.lg
+
+  let creer (n: int) (dummy: 'a) : tableauCirculaire 'a
+    requires { n > 0 }
+    ensures  { taille result = n }
+    ensures  { result.sequence = Nil }
+  = 
+  {premier = 0;
+  lg = 0;
+  tableau = make n dummy;
+  sequence = Nil}
+
+  let effacer (b: tableauCirculaire 'a) : unit
+    writes  { b.lg, b.sequence }
+    ensures { longueur b = 0 }
+    ensures { b.sequence = Nil }
+  = 
+  b.lg <- 0;
+  b.sequence <- Nil
+  
+  let push (b: tableauCirculaire 'a) (x: 'a) : unit
+    requires { longueur b < taille b }
+    writes   { b.tableau.elts, b.lg, b.sequence }
+    ensures  { longueur b = (old (longueur b)) + 1 }
+    ensures  { b.sequence = (old b.sequence) ++ Cons x Nil }
+   =  ghost (b.sequence <- b.sequence ++ Cons x Nil);
+    let i = b.premier + b.lg in
+    let n = A.length b.tableau in
+    b.tableau[if i >= n then i - n else i] <- x;
+    b.lg <- b.lg + 1
+
+  let tete (b: tableauCirculaire 'a) : 'a
+    requires { longueur b > 0 }
+    ensures  { match b.sequence with Nil -> false | Cons x _ -> result = x end }
+  =
+  b.tableau[b.premier]
+
+  let pop (b: tableauCirculaire 'a) : 'a
+    requires { longueur b > 0 }
+    writes   { b.premier, b.lg, b.sequence }
+    ensures  { longueur b = (old (longueur b)) - 1 }
+    ensures  { match old b.sequence with
+               | Nil -> false
+               | Cons x l -> result = x /\ b.sequence = l end }
+  = 
+  
+  let i = tete b in
+ 
+  b.premier <- if( b.premier < (A.length b.tableau)-1) then b.premier + 1 else 0;
+  b.lg <- b.lg -1;
+  
+  ghost(match b.sequence with 
+  | Nil -> absurd
+  | Cons head tail -> (b.sequence <- tail)
+  end);
+  
+  i
+  
+end
+
+module Test1             (*********************************)
+  use TableauCirculaire  (******  QUESTION 1 - DEBUT ******)
+  use list.List          (*********************************)
+
+    (* Pour chaque test, il est fortement conseillé de dessiner sur une
+       feuille le tableau circulaire b après chaque opération push ou pop. *)
+
+  let test () =
+    let b = creer 10 0 in
+    push b 1;
+    push b 2;
+    push b 3;
+    assert { longueur b = 3 };    
+    let x = pop b in assert { x = 1 };
+    let x = pop b in assert { x = 2 };
+    let x = pop b in assert { x = 3 };
+    assert { longueur b = 0 }
+
+  let test2 () = 
+    let b = creer 3 0 in
+    push b 1;
+    assert { b.sequence = Cons 1 Nil };
+    push b 2;
+    assert { b.sequence = Cons 1 (Cons 2 Nil) };
+    push b 3;
+    assert { b.sequence = Cons 1 (Cons 2 (Cons 3 Nil)) };
+    let x = pop b in assert { x = 1 };
+    assert { b.sequence = Cons 2 (Cons 3 Nil) };
+    push b 4;
+    assert { b.sequence = Cons 2 (Cons 3 (Cons 4 Nil)) };
+    let x = pop b in assert { x = 2 };
+    assert { b.sequence = Cons 3 (Cons 4 Nil) };
+    let x = pop b in assert { x = 3 };
+    assert { b.sequence = Cons 4 Nil };
+    let x = pop b in assert { x = 4 }
+
+  let test3 (x: int) (y: int) (z: int) =
+    let b = creer 2 0 in
+    push b x;
+    push b y;
+    assert { b.sequence = Cons x (Cons y Nil) };
+    let h = pop b in assert { h = x };
+    assert { b.sequence = Cons y Nil };
+    push b z;
+    assert { b.sequence = Cons y (Cons z Nil) };
+    let h = pop b in assert { h = y };
+    let h = pop b in assert { h = z }
+    
+  let test4 () =
+    let b = creer 5 0 in
+    push b 5;
+    push b 10;
+    effacer b;
+    push b 15;
+    let x = tete b in
+    assert { x = 15 };
+    assert { b.lg = 1 }  
+
+end
+
+module Test2               (*******************************)
+  use TableauCirculaire    (******  QUESTION 1 - FIN ******)
+  use list.List            (*******************************)
+
+type couleur = Bleu | Blanc | Rouge
+
+  let test () =
+    let b = creer 10 Bleu in
+    push b Blanc;
+    push b Rouge;
+    push b Bleu;
+    assert { longueur b = 3 };    
+    let x = pop b in assert { x = Blanc };
+    let x = pop b in assert { x = Rouge };
+    let x = pop b in assert { x = Bleu };
+    assert { longueur b = 0 }   
+
+  let test2 () = 
+    let b = creer 3 Bleu in
+    push b Blanc;
+    assert { b.sequence = Cons Blanc Nil };
+    push b Rouge;
+    assert { b.sequence = Cons Blanc (Cons Rouge Nil) };
+    push b Bleu;
+    assert { b.sequence = Cons Blanc (Cons Rouge (Cons Bleu Nil)) };
+    let x = pop b in assert { x = Blanc };
+    assert { b.sequence = Cons Rouge (Cons Bleu Nil) };
+    push b Blanc;
+    assert { b.sequence = Cons Rouge (Cons Bleu (Cons Blanc Nil)) };
+    let x = pop b in assert { x = Rouge };
+    assert { b.sequence = Cons Bleu (Cons Blanc Nil) };
+    let x = pop b in assert { x = Bleu };
+    assert { b.sequence = Cons Blanc Nil };
+    let x = pop b in assert { x = Blanc }
+
+end
+
+
+(* PARTIE 2 : séquences  
+   
+  Programmer tous les sous-progrzmmes du module TableauCirculaireSeq et
+   prouver que chacun est correct par rapport à sa spécification.
+    
+  Si besoin, la bibliothèque des séquences est ici :
+  http://why3.lri.fr/stdlib/seq.html
+     
+*)    
+
+
+(*****************************************************************)
+(******* QUESTION 3 : avec des séquences au lieu de listes *******)
+(*****************************************************************)
+module TableauCirculaireSeq
+  use int.Int
+  use import seq.Seq as S
+  use import array.Array as A
+
+  type tableauCirculaire 'a = {
+    mutable premier: int;
+    mutable lg  : int;
+            tableau : array 'a;
+    ghost mutable sequence: S.seq 'a;  
+    }
+  invariant {
+    let taille = A.length tableau in
+    0 <= premier <  taille /\
+    0 <= lg   <= taille /\
+    lg = S.length sequence /\
+    forall i: int. 0 <= i < lg ->
+      (premier + i < taille ->
+         S.get sequence i = tableau[premier + i]) /\
+      (0 <= premier + i - taille ->
+         S.get sequence i = tableau[premier + i - taille])
+  }
+  by { premier = 0; lg = 0; tableau = make 1 (any 'a) ; sequence = S.empty } 
+
+  (* capacité maximale d'un tableau circulaire *)
+  let function taille (b: tableauCirculaire 'a) : int = A.length b.tableau
+
+  (* nombre d'éléments *)
+ let  function longueur (b: tableauCirculaire 'a) : int = b.lg
+
+  (* code *)
+
+  let creer (n: int) (dummy: 'a) : tableauCirculaire 'a
+    requires { n > 0 }
+    ensures  { taille result = n }
+    ensures  { result.sequence = S.empty }
+  = 
+  { premier = 0; 
+  lg = 0; 
+  tableau = make n dummy;
+  sequence = S.empty}
+
+
+  let effacer (b: tableauCirculaire 'a) : unit
+    writes  { b.lg, b.sequence }
+    ensures { longueur b = 0 }
+    ensures { b.sequence = S.empty }
+   = 
+  b.lg <- 0;
+  b.sequence <- S.empty  
+  
+  let push (b: tableauCirculaire 'a) (x: 'a) : unit
+    requires { longueur b < taille b }
+    writes   { b.tableau.elts, b.lg, b.sequence }
+    ensures  { longueur b = (old (longueur b)) + 1 }
+    ensures  { b.sequence = S.snoc (old b.sequence) x }
+  = ghost (b.sequence <- S.snoc b.sequence x);
+    let i = b.premier + b.lg in
+    let n = A.length b.tableau in
+    b.tableau[if i >= n then i - n else i] <- x;
+    b.lg <- b.lg + 1
+
+  let tete (b: tableauCirculaire 'a) : 'a
+    requires { longueur b > 0 }
+    ensures  { result = S.([]) b.sequence 0 }
+   =
+  b.tableau[b.premier]
+
+  let pop (b: tableauCirculaire 'a) : 'a
+    requires { longueur b > 0 }
+    writes   { b.premier, b.lg, b.sequence }
+    ensures  { longueur b = (old (longueur b)) - 1 }
+    ensures  { result = S.get (old b.sequence) 0 }
+    ensures  { b.sequence = (old b.sequence)[1..] }
+  = 
+  let i = tete b in
+  b.premier <- if( b.premier < (A.length b.tableau)-1) then b.premier + 1 else 0;
+  b.lg <- b.lg -1;
+  b.sequence <- b.sequence[1..];
+  i
+
+end

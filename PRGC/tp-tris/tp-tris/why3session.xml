@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
+"http://why3.lri.fr/why3session.dtd">
+<why3session shape_version="6">
+<prover id="0" name="Alt-Ergo" version="2.4.1" timelimit="5" steplimit="0" memlimit="1000"/>
+<file format="whyml">
+<path name=".."/><path name="tp-tris.mlw"/>
+<theory name="TriEx1" proved="true">
+ <goal name="minimum&#39;vc" expl="VC for minimum" proved="true">
+ <transf name="split_vc" proved="true" >
+  <goal name="minimum&#39;vc.0" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="7"/></proof>
+  </goal>
+  <goal name="minimum&#39;vc.1" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="12"/></proof>
+  </goal>
+  <goal name="minimum&#39;vc.2" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="15"/></proof>
+  </goal>
+  <goal name="minimum&#39;vc.3" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="15"/></proof>
+  </goal>
+  <goal name="minimum&#39;vc.4" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="21"/></proof>
+  </goal>
+  <goal name="minimum&#39;vc.5" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="42"/></proof>
+  </goal>
+  <goal name="minimum&#39;vc.6" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="19"/></proof>
+  </goal>
+  <goal name="minimum&#39;vc.7" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="25"/></proof>
+  </goal>
+  <goal name="minimum&#39;vc.8" expl="postcondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="11"/></proof>
+  </goal>
+  <goal name="minimum&#39;vc.9" expl="postcondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="17"/></proof>
+  </goal>
+  <goal name="minimum&#39;vc.10" expl="out of loop bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="6"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="tri_selection&#39;vc" expl="VC for tri_selection" proved="true">
+ <proof prover="0"><result status="valid" time="0.40" steps="4710"/></proof>
+ </goal>
+</theory>
+<theory name="TriEx1Tests" proved="true">
+ <goal name="test_minimum&#39;vc" expl="VC for test_minimum" proved="true">
+ <proof prover="0"><result status="valid" time="0.01" steps="248"/></proof>
+ </goal>
+ <goal name="test_minimum2&#39;vc" expl="VC for test_minimum2" proved="true">
+ <proof prover="0"><result status="valid" time="0.05" steps="1638"/></proof>
+ </goal>
+ <goal name="test_minimum3&#39;vc" expl="VC for test_minimum3" proved="true">
+ <proof prover="0"><result status="valid" time="0.01" steps="248"/></proof>
+ </goal>
+ <goal name="test_triSelection&#39;vc" expl="VC for test_triSelection" proved="true">
+ <proof prover="0"><result status="valid" time="0.01" steps="184"/></proof>
+ </goal>
+ <goal name="test_triSelection2&#39;vc" expl="VC for test_triSelection2" proved="true">
+ <proof prover="0"><result status="valid" time="0.04" steps="1456"/></proof>
+ </goal>
+</theory>
+<theory name="TriEx2">
+ <goal name="tri_insertion_v0&#39;vc" expl="VC for tri_insertion_v0" proved="true">
+ <proof prover="0"><result status="valid" time="1.05" steps="13085"/></proof>
+ <transf name="split_vc" proved="true" >
+  <goal name="tri_insertion_v0&#39;vc.0" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="9"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.1" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="11"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.2" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="12"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.3" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="12"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.4" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="12"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.5" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="44"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.6" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="16"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.7" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="14"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.8" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="26"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.9" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="38"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.10" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="38"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.11" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="45"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.12" expl="loop variant decrease" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="64"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.13" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.12" steps="2316"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.14" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="66"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.15" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.04" steps="591"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.16" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="314"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.17" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="117"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.18" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="234"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.19" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="26"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.20" expl="postcondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.21" expl="postcondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="tri_insertion_v0&#39;vc.22" expl="out of loop bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="18"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="tri_insertion&#39;vc" expl="VC for tri_insertion">
+ <transf name="split_vc" >
+  <goal name="tri_insertion&#39;vc.0" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="9"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.1" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="11"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.2" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="12"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.3" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.04" steps="634"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.4" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="14"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.5" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="81"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.6" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="17"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.7" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="15"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.8" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="26"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.9" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="26"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.10" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="42"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.11" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="42"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.12" expl="loop variant decrease" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="53"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.13" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.12" steps="2374"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.14" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="55"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.15" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="650"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.16" expl="loop invariant preservation">
+  <proof prover="0"><result status="timeout" time="5.00"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.17" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="186"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.18" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="24"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.19" expl="loop invariant preservation">
+  <proof prover="0"><result status="timeout" time="5.00"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.20" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="32"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.21" expl="postcondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.22" expl="postcondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="tri_insertion&#39;vc.23" expl="out of loop bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="3"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="TriEx2Tests" proved="true">
+ <goal name="test_tri_insertion_v0_1&#39;vc" expl="VC for test_tri_insertion_v0_1" proved="true">
+ <proof prover="0"><result status="valid" time="0.01" steps="184"/></proof>
+ <transf name="split_vc" proved="true" >
+  <goal name="test_tri_insertion_v0_1&#39;vc.0" expl="array creation size" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_1&#39;vc.1" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="2"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_1&#39;vc.2" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_1&#39;vc.3" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="23"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_1&#39;vc.4" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="47"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_1&#39;vc.5" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="81"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_1&#39;vc.6" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="123"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_1&#39;vc.7" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="176"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_1&#39;vc.8" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="239"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="test_tri_insertion_v0_2&#39;vc" expl="VC for test_tri_insertion_v0_2" proved="true">
+ <transf name="split_vc" proved="true" >
+  <goal name="test_tri_insertion_v0_2&#39;vc.0" expl="array creation size" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.1" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="2"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.2" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.3" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="23"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.4" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="48"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.5" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="81"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.6" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="123"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.7" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="176"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.8" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="239"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.9" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="312"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.10" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="396"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.11" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="489"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.12" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="596"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.13" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="712"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.14" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="841"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.15" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="985"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.16" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="1129"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.17" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.05" steps="1303"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.18" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="1476"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_v0_2&#39;vc.19" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.04" steps="1658"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="test_tri_insertion_1&#39;vc" expl="VC for test_tri_insertion_1" proved="true">
+ <transf name="split_vc" proved="true" >
+  <goal name="test_tri_insertion_1&#39;vc.0" expl="array creation size" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_1&#39;vc.1" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="2"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_1&#39;vc.2" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_1&#39;vc.3" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="23"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_1&#39;vc.4" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="47"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_1&#39;vc.5" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="81"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_1&#39;vc.6" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="123"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_1&#39;vc.7" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="176"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_1&#39;vc.8" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="239"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="test_tri_insertion_2&#39;vc" expl="VC for test_tri_insertion_2" proved="true">
+ <transf name="split_vc" proved="true" >
+  <goal name="test_tri_insertion_2&#39;vc.0" expl="array creation size" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.1" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="2"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.2" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.3" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="23"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.4" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="48"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.5" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="81"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.6" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="123"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.7" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="176"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.8" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="239"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.9" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="312"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.10" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="396"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.11" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="489"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.12" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="596"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.13" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="712"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.14" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="841"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.15" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="985"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.16" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="1129"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.17" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="1303"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.18" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="1476"/></proof>
+  </goal>
+  <goal name="test_tri_insertion_2&#39;vc.19" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.04" steps="1658"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="TriEx3" proved="true">
+ <goal name="tri_bulles&#39;vc" expl="VC for tri_bulles" proved="true">
+ <transf name="split_vc" proved="true" >
+  <goal name="tri_bulles&#39;vc.0" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="7"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.1" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="13"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.2" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="12"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.3" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="13"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.4" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="13"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.5" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="23"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.6" expl="loop invariant init" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="17"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.7" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="23"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.8" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="23"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.9" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="27"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.10" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="107"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.11" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="622"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.12" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="913"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.13" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="344"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.14" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="27"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.15" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="27"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.16" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="39"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.17" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="58"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.18" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="19"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.19" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="84"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.20" expl="loop invariant preservation" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="37"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.21" expl="out of loop bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="12"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.22" expl="postcondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="tri_bulles&#39;vc.23" expl="postcondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="18"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+<theory name="TriEx3Tests" proved="true">
+ <goal name="test_tri_bulles_1&#39;vc" expl="VC for test_tri_bulles_1" proved="true">
+ <transf name="split_vc" proved="true" >
+  <goal name="test_tri_bulles_1&#39;vc.0" expl="array creation size" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_1&#39;vc.1" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="2"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_1&#39;vc.2" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_1&#39;vc.3" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="23"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_1&#39;vc.4" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="47"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_1&#39;vc.5" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="81"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_1&#39;vc.6" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="123"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_1&#39;vc.7" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="176"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_1&#39;vc.8" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="239"/></proof>
+  </goal>
+ </transf>
+ </goal>
+ <goal name="test_tri_bulles_2&#39;vc" expl="VC for test_tri_bulles_2" proved="true">
+ <transf name="split_vc" proved="true" >
+  <goal name="test_tri_bulles_2&#39;vc.0" expl="array creation size" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.1" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="2"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.2" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="10"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.3" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="23"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.4" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="48"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.5" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="81"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.6" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="123"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.7" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="176"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.8" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="239"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.9" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="312"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.10" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="396"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.11" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="489"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.12" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.01" steps="596"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.13" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="712"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.14" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="841"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.15" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.02" steps="981"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.16" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="1129"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.17" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="1292"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.18" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.03" steps="1478"/></proof>
+  </goal>
+  <goal name="test_tri_bulles_2&#39;vc.19" expl="index in array bounds" proved="true">
+  <proof prover="0"><result status="valid" time="0.06" steps="1662"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+</file>
+</why3session>

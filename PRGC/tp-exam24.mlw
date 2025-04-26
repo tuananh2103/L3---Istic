@@ -1,0 +1,133 @@
+(**************************************************************
+
+ Le sujet complet distribué l'an dernier est disponible ici :
+ https://foad.univ-rennes.fr/mod/resource/view.php?id=597340
+ 
+ **************************************************************)
+
+(********* EXERCICE 1  ***********)
+
+module Exo1
+  use int.Int
+  use array.Array
+
+  (* Écrire la spécification d'un programme [indicesZeros], qui étant
+     donné un tableau d'entiers t, retourne un tableau de booléens de
+     même taille que t, et dont la valeur de chaque case indique si
+     oui ou non cette case est nulle dans t. *)
+
+ val indicesZeros (a: array int) : array bool
+
+(* Écrire deux tests du programme [indicesZeros] *)
+
+  let test_spec_1 () =
+        assert { true}   (* a modifier *) 
+
+  let test_spec_2 () =
+        assert { true}   (* a modifier *) 
+
+  (* Programmer [indicesZeros], et prouver qu'il satisfait sa spécification. *)
+  
+  (* Quelles sont les différentes conditions de vérification que Why3 génère
+     pour établir que ce programme est correct ?
+     Pour chacune d'elles, quelle est la formule logique à établir ? 
+  *)
+
+end
+
+(********* EXERCICE 2   ***********)
+
+module Ex2
+  use int.Int
+  use list.List
+ (* use bintree.Tree *)
+ 
+  (*  
+     Définir la fonction somme calculant la somme des éléments d'une liste d'entiers.
+   *)
+  let rec function somme (l: list int) : int =
+  0 (* a modifier *) 
+ 
+  
+  
+  (* Écrire deux tests de somme utlisant des listes contenant au moins deux éléments *)
+
+   let test_1 () = 
+        assert { true }  (* a modifier *) 
+
+   let test_2 () = 
+        assert { true }   (* a modifier *) 
+  
+
+   (* Le reste de l'exercice porte sur les arbres qui seront étudiés la semaine prochaine. *)
+end
+
+(********* EXERCICE 3 ***********)
+module Ex3
+  use int.Int
+  use matrix.Matrix
+  use random.Random
+  use ref.Ref
+  use ref.Refint
+
+(*
+  Dans cet exercice, on modélise une carte de randonnée contenant une rivière à l'aide d'une matrice.
+Voici les spécifications d'une carte.
+
+- Une carte est une matrice dont chaque case contient soit de la terre, de l'eau ou une pierre.
+
+- Une carte est dite valide si elle représente une rivière. Une carte valide possède donc deux rives,
+  la rive haute et la rive basse, ainsi qu'une rivière qui sépare ces deux rives.
+  Les deux rives sont composées uniquement de terre.
+  La première ligne de la matrice représente la rive haute. La dernière ligne de la matrice représente la rive basse.
+  La rivière remplit le reste de la carte, et est composée d'eau et de pierres (les pierres qui dépassent le niveau d'eau).
+  
+- Une carte valide a forcément au moins trois lignes: une première ligne pour la rive haute, 
+  au moins une ligne centrale pour la rivière et une dernière ligne pour la rive basse.
+  
+- Une rivière est traversable s'il existe un alignement vertical continu de pierres dans le cours d'eau qui joint les deux rives.
+
+
+Voici trois exemples de cartes valides, dans lesquelles T signifie terre, E signifie eau et P signifie pierre.
+La rivière de la troisième carte est traversable par la sixième colonne. Les rivières des deux autres cartes ne sont pas traversables.
+
+T T T T T               T T T T T               T T T T T T T
+E E E E E               E E P E P               E E E P E P E
+T T T T T               P P P P E               E P E E E P E
+                        E E E E E               E E E E P P P
+                        T T T T T               T T T T T T T
+
+Définir le type de données représentant les cases d'une carte, ainsi que le type représentant une carte.
+*)
+  type case = int (* a modifier *)
+  type carte = int (* a modifier *)
+  
+(* Écrire un prédicat qui détermine si une carte est valide. 
+   Attention, la rivière d'une carte valide n'est pas forcément traversable.
+   
+   Indication : pour faciliter l'écriture du prédicat carte_valide, ce dernier pourra être défini à partir de prédicats à définir, 
+   comme par exemple les deux prédicats presence_rives (c: carte) et presence_riviere (c: carte).  
+*)  
+  
+  predicate carte_valide (c: carte) = true
+
+(* Spécifier le programme mk_carte qui construit une carte valide quelconque.
+  Ce programme prend en paramètre le nombre de lignes n et de colonnes m de la matrice représentant la carte.
+*)     
+  val mk_carte (n m: int) : carte
+
+ (* Spécifier le programme ajout_pont qui ajoute un pont de pierres dans une carte valide à une colonne col donnée, 
+    c'est-à-dire rend la rivière traversable en colonne col.
+  Indication: pour faciliter l'écriture de cette spécification, il est conseillé de définir un prédicat 
+   traversable (c: carte) (col: int) qui détermine si la rivière d'une carte est traversable en une colonne donnée 
+  *)
+    
+  val ajout_pont (c: carte) (j: int) : unit
+
+(* Questions qui n'ont pas été posées à l'examen *)
+
+(* Prorgammer mk_carte et prouver qu'il satisfait sa spécification *)
+
+(* Prorgammer mk_carte et prouver qu'il satisfait sa spécification *)
+
+end

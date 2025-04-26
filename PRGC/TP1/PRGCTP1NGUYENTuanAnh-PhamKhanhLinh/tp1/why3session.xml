@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE why3session PUBLIC "-//Why3//proof session v5//EN"
+"http://why3.lri.fr/why3session.dtd">
+<why3session shape_version="6">
+<prover id="0" name="Alt-Ergo" version="2.4.1" timelimit="5" steplimit="0" memlimit="1000"/>
+<prover id="1" name="Alt-Ergo" version="2.4.1" alternative="FPA" timelimit="5" steplimit="0" memlimit="1000"/>
+<file format="whyml">
+<path name=".."/><path name="tp1.mlw"/>
+<theory name="Ex0Test" proved="true">
+ <goal name="test0&#39;vc" expl="VC for test0" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+ </goal>
+ <goal name="test1&#39;vc" expl="VC for test1" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+ <goal name="test2&#39;vc" expl="VC for test2" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+ <goal name="test3&#39;vc" expl="VC for test3" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+ </goal>
+</theory>
+<theory name="Ex1">
+ <goal name="max&#39;vc" expl="VC for max">
+ </goal>
+</theory>
+<theory name="Ex1Test" proved="true">
+ <goal name="test1&#39;vc" expl="VC for test1" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+ <goal name="test2&#39;vc" expl="VC for test2" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+ <goal name="test3&#39;vc" expl="VC for test3" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+ <goal name="test4&#39;vc" expl="VC for test4" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+ <goal name="test5&#39;vc" expl="VC for test5" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="4"/></proof>
+ </goal>
+</theory>
+<theory name="Ex2">
+ <goal name="abs_q1&#39;vc" expl="VC for abs_q1">
+ </goal>
+ <goal name="abs_q4&#39;vc" expl="VC for abs_q4">
+ </goal>
+ <goal name="abs_q5&#39;vc" expl="VC for abs_q5">
+ </goal>
+ <goal name="abs_q6&#39;vc" expl="VC for abs_q6">
+ </goal>
+</theory>
+<theory name="Ex2Test">
+ <goal name="test1&#39;vc" expl="VC for test1" proved="true">
+ <proof prover="0" obsolete="true"><result status="valid" time="0.00" steps="1"/></proof>
+ <proof prover="1"><result status="valid" time="0.01" steps="1"/></proof>
+ </goal>
+ <goal name="test2&#39;vc" expl="VC for test2" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+ </goal>
+ <goal name="test3&#39;vc" expl="VC for test3" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="1"/></proof>
+ </goal>
+ <goal name="test4&#39;vc" expl="VC for test4" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+ </goal>
+ <goal name="test5&#39;vc" expl="VC for test5" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="1"/></proof>
+ </goal>
+ <goal name="test6&#39;vc" expl="VC for test6" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="1"/></proof>
+ </goal>
+ <goal name="test7&#39;vc" expl="VC for test7" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="1"/></proof>
+ </goal>
+ <goal name="test8&#39;vc" expl="VC for test8">
+ </goal>
+</theory>
+<theory name="Ex3">
+ <goal name="boucle&#39;vc" expl="VC for boucle">
+ </goal>
+</theory>
+<theory name="Ex3Test" proved="true">
+ <goal name="test&#39;vc" expl="VC for test" proved="true">
+ <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+ <transf name="split_vc" proved="true" >
+  <goal name="test&#39;vc.0" expl="precondition" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+  </goal>
+  <goal name="test&#39;vc.1" expl="assertion" proved="true">
+  <proof prover="0"><result status="valid" time="0.00" steps="0"/></proof>
+  </goal>
+ </transf>
+ </goal>
+</theory>
+</file>
+</why3session>
